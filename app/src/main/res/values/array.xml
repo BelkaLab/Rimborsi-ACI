@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="fuelTypeArray">
+        <item>BENZINA</item>
+        <item>GASOLIO</item>
+        <item>ELETTRICO-IBRIDO</item>
+        <item>GPL-METANO</item>
+    </string-array>
+</resources>

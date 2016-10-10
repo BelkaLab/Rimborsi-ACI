@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_brand"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    android:focusableInTouchMode="true"
+    tools:context="belka.us.acirefund.brand.BrandActivity">
+
+    <include layout="@layout/view_loading" />
+
+    <include
+        layout="@layout/view_error"
+        android:visibility="invisible" />
+
+    <RelativeLayout
+        android:id="@+id/contentView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey"
+        android:visibility="invisible"
+        app:layout_behavior="belka.us.acirefund.utils.CustomScrollingViewBehavior">
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/banner_height">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/spinner_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:elevation="4dp"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/spaces_medium"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingTop="@dimen/activity_vertical_margin">
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/brand_spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/spaces_small"
+                        android:layout_weight="1"
+                        app:ms_hint="@string/labels_brand" />
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/fuel_type_spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spaces_small"
+                        android:layout_weight="1"
+                        app:ms_hint="@string/labels_fuel_type" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:id="@+id/refund_fragment_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/spinner_layout"
+                    android:background="@color/white"
+                    android:elevation="4dp"
+                    android:paddingBottom="@dimen/spaces_large"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin" />
+
+                <include
+                    layout="@layout/card_view_evaluation_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/refund_fragment_container"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/spaces_large"
+                    android:layout_marginBottom="@dimen/spaces_large"
+                    android:visibility="invisible" />
+
+            </RelativeLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/ad_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/appbar_layout" />
+
+</android.support.design.widget.CoordinatorLayout>

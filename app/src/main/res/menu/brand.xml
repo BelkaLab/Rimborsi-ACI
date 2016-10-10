@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/belka_credit_menu_item"
+        android:title="@string/menu_credits"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/terms_of_use_menu_item"
+        android:title="@string/menu_info"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/feedback_menu_item"
+        android:title="@string/menu_feedback"
+        app:showAsAction="never" />
+</menu>

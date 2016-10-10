@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/test"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <include layout="@layout/view_loading" />
+
+    <include layout="@layout/view_error" />
+
+    <RelativeLayout
+        android:id="@+id/contentView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible">
+
+        <fr.ganfra.materialspinner.MaterialSpinner
+            android:id="@+id/model_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spaces_medium"
+            app:ms_hint="@string/labels_model" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/kmcount_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/model_spinner"
+            android:layout_marginBottom="@dimen/spaces_medium">
+
+            <EditText
+                android:id="@+id/kmcount_edit_text"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/labels_kmcount"
+                android:imeOptions="actionDone"
+                android:inputType="number" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/evaluate_km_refund_button"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/kmcount_input_layout"
+            android:layout_marginBottom="@dimen/spaces_small"
+            android:enabled="false"
+            android:text="@string/labels_evaluate" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Rimborsi ACI</string>
+    <string name="banner_ad_app_id">ca-app-pub-5277345847858536~9389059003</string>
+    <string name="banner_ad_unit_id">ca-app-pub-5277345847858536/1865792200</string>
+    <string name="labels_kmcount">Numero di Km</string>
+    <string name="labels_evaluate">Calcola</string>
+    <string name="labels_float_value_2d">%1$.2f€</string>
+    <string name="labels_float_value_4d">%1$.4f€</string>
+    <string name="labels_brand">Marca</string>
+    <string name="labels_model">Modello</string>
+    <string name="labels_fuel_type">Alimentazione</string>
+    <string name="labels_km_refund">Rimborso chilometrico</string>
+    <string name="labels_total_refund">Totale dovuto</string>
+    <string name="labels_info">Informazioni</string>
+    <string name="menu_credits">Realizzato da Belka</string>
+    <string name="menu_feedback">Invia feedback</string>
+    <string name="menu_info">Informazioni</string>
+    <string name="messages_error_has_occured">Impossibile contattare il server, tocca per riprovare</string>
+    <string name="term_of_use">Tutti i dati utilizzati dall\'applicazione si basano sulle tabelle nazionali dei costi chilometrici di esercizio di autovetture
+        elaborate dall\'ACI per l\'anno 2016 (Art. 3, comma 1, del decreto legislativo 2 settembre 1997, n.314). Le tabelle si basano sul costo chilometrico per un
+        utilizzo dell\'autoveicolo pari a 15.000 Km annui.</string>
+    <string name="info_title">Informazioni</string>
+    <string name="app_version">Versione %s</string>
+    <string name="labels_result">Risultato</string>
+</resources>
