@@ -49,6 +49,7 @@ public class ConversionUtils {
         DecimalFormat df = new DecimalFormat();
         DecimalFormatSymbols formatSymbols = new DecimalFormatSymbols();
         formatSymbols.setDecimalSeparator(',');
+        formatSymbols.setGroupingSeparator(' ');
         df.setDecimalFormatSymbols(formatSymbols);
 
         return df;

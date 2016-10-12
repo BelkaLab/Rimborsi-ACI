@@ -19,19 +19,11 @@ android {
         applicationId "belka.us.acirefund"
         minSdkVersion 16
         targetSdkVersion 24
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
-    }
-    signingConfigs {
-        release {
-            keyAlias 'ACIRefundRelease'
-            keyPassword 'QEyg#W8h,E?U*no}p4k9Hwcn)8eU/No=Dn3d779t,yj3C=aP8U'
-            storeFile rootProject.file('keystores/app-release.jks')
-            storePassword 'e8p(dr72zU7t(oJ]@Nt7d38JLW&Viz.CR9N#QEm?Dk4{D7up/m'
-        }
     }
     buildTypes {
         release {
@@ -53,43 +45,32 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
     compile 'com.android.support:multidex:1.0.1'
-
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:design:24.2.1'
     compile 'com.android.support:cardview-v7:24.2.1'
-
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.jakewharton:butterknife:8.4.0'
-
     compile 'com.google.android.gms:play-services-auth:9.6.0'
     compile 'pub.devrel:easypermissions:0.1.5'
-
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.1.6'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-
     compile 'com.hannesdorfmann.mosby:mvp:2.0.1'
     compile 'com.hannesdorfmann.mosby:viewstate:2.0.1'
     apt 'com.hannesdorfmann.fragmentargs:processor:4.0.0-SNAPSHOT'
     compile 'com.hannesdorfmann.fragmentargs:annotation:3.0.2'
     compile 'com.hannesdorfmann.fragmentargs:bundler-parceler:3.0.2'
-
     compile 'frankiesardo:icepick:3.2.0'
     provided 'frankiesardo:icepick-processor:3.2.0'
-
     apt 'com.google.dagger:dagger-compiler:2.0'
     compile 'com.google.dagger:dagger:2.0'
     compile 'javax.annotation:javax.annotation-api:1.2'
-
     compile 'com.github.castorflex.smoothprogressbar:library-circular:1.1.0'
     compile 'com.github.ganfra:material-spinner:1.1.1'
-
     compile 'com.google.firebase:firebase-ads:9.6.0'
-
     compile('com.google.api-client:google-api-client-android:1.22.0') {
         exclude group: 'org.apache.httpcomponents'
         exclude group: 'com.google.guava'
@@ -100,7 +81,6 @@ dependencies {
         exclude module: 'support-annotations'
         exclude group: 'com.google.guava'
     }
-
     compile 'com.google.guava:guava:19.0'
     compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
         transitive = true;

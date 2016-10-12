@@ -27,6 +27,8 @@ import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 import java.util.Arrays;
 import java.util.List;
 
+import belka.us.acirefund.R;
+import belka.us.acirefund.base.exception.PermissionNotGrantedException;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -91,6 +93,8 @@ public abstract class BaseGooglePermissionLceActivity<CV extends View, M, V exte
                         credential.setSelectedAccountName(accountName);
                         validateGoogleAccount(true);
                     }
+                } else {
+                    showError(new PermissionNotGrantedException(getString(R.string.messages_permission_not_granted)), false);
                 }
                 break;
             case REQUEST_AUTHORIZATION:
@@ -117,7 +121,7 @@ public abstract class BaseGooglePermissionLceActivity<CV extends View, M, V exte
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
-
+        showError(new PermissionNotGrantedException(getString(R.string.messages_permission_not_granted)), false);
     }
 
     public void validateGoogleAccount(boolean runLoad) {
@@ -173,7 +177,7 @@ public abstract class BaseGooglePermissionLceActivity<CV extends View, M, V exte
             // Request the GET_ACCOUNTS permission via a user dialog
             EasyPermissions.requestPermissions(
                     this,
-                    "This app needs to access your Google account (via Contacts).",
+                    getString(R.string.messages_ask_google_permission),
                     REQUEST_PERMISSION_GET_ACCOUNTS,
                     Manifest.permission.GET_ACCOUNTS);
         }
@@ -184,39 +188,6 @@ public abstract class BaseGooglePermissionLceActivity<CV extends View, M, V exte
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         return (networkInfo != null && networkInfo.isConnected());
-    }
-
-    private void showNotification(int notif_id) {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
-                .setWhen(System.currentTimeMillis());
-
-        Intent intentContent = new Intent();
-        PendingIntent pendingContent;
-
-        switch (notif_id) {
-//            case NOTIFICATION_NEED_AUTHORIZE:
-//                intentContent.setClass(this, BrandActivity.class);
-//                intentContent.setAction(Utils.ACTION_AUTHENTICATE);
-//                intentContent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                PendingIntent pendingAuthorize = PendingIntent.getActivity(
-//                        this, 0, intentContent, PendingIntent.FLAG_CANCEL_CURRENT);
-//                builder.setContentIntent(pendingAuthorize)
-//                        .setAutoCancel(true)
-//                        .setSmallIcon(android.R.drawable.stat_notify_error)
-//                        .setTicker(getString(R.string.txt_error_sending))
-//                        .setContentTitle(getString(R.string.txt_error_sending))
-//                        .setContentText(getString(R.string.txt_need_authorize));
-//                break;
-
-            default:
-                break;
-        }
-        ((NotificationManager)getSystemService(NOTIFICATION_SERVICE))
-                .notify(notif_id, builder.build());
-    }
-
-    private void cancelNotification(int notif_id) {
-        ((NotificationManager)getSystemService(NOTIFICATION_SERVICE)).cancel(notif_id);
     }
 
     void showGooglePlayServicesAvailabilityErrorDialog(

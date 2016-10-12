@@ -12,10 +12,12 @@ import java.util.ResourceBundle;
 public class Config {
 
     private static final ResourceBundle resourceBundle = ResourceBundle.getBundle("google");
+    private static final ResourceBundle googleSecretresourceBundle = ResourceBundle.getBundle("googleapi");
 
     public static final String SHEET_ID = resourceBundle.getString("sheetId");
     public static final String BRAND_RANGE = resourceBundle.getString("brandRange");
     public static final String BELKA_URL = resourceBundle.getString("belkaUrl");
+    public static final String API_KEY= googleSecretresourceBundle.getString("apiKey");
 
     private static final String REFUND_SHEET_RANGE = resourceBundle.getString("refundSheetRange");
     private static final String BENZINA_SHEET_NAME = resourceBundle.getString("benzinaSheetName");

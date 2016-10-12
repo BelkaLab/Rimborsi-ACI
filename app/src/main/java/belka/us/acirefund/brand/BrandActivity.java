@@ -24,8 +24,8 @@ import java.util.List;
 
 import belka.us.acirefund.R;
 import belka.us.acirefund.RefundApplication;
-import belka.us.acirefund.base.view.BaseGooglePermissionLceActivity;
-import belka.us.acirefund.dagger.GoogleFactory;
+import belka.us.acirefund.base.exception.PermissionNotGrantedException;
+import belka.us.acirefund.base.view.BaseLceActivity;
 import belka.us.acirefund.model.Brand;
 import belka.us.acirefund.refund.RefundFragmentBuilder;
 import belka.us.acirefund.terms.InfoActivity;
@@ -37,7 +37,7 @@ import io.fabric.sdk.android.Fabric;
  * Created by fabriziorizzonelli on 28/09/2016.
  */
 
-public class BrandActivity extends BaseGooglePermissionLceActivity<RelativeLayout, List<Brand>, BrandView, BrandPresenter> implements BrandView {
+public class BrandActivity extends BaseLceActivity<RelativeLayout, List<Brand>, BrandView, BrandPresenter> implements BrandView {
 
     private BrandComponent brandComponent;
     private Brand mCurrentBrand;
@@ -58,13 +58,6 @@ public class BrandActivity extends BaseGooglePermissionLceActivity<RelativeLayou
     TextView totalRefundValueTextView;
 
     @Override
-    protected void validateBeforeLoad(boolean runLoad) {
-        presenter.setSheetsService(GoogleFactory.createSheetsService(credential));
-        if (runLoad)
-            loadData(false);
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
@@ -73,7 +66,7 @@ public class BrandActivity extends BaseGooglePermissionLceActivity<RelativeLayou
         setSupportActionBar(toolbar);
 
         MobileAds.initialize(getApplicationContext(), getString(R.string.banner_ad_app_id));
-        adView.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).addTestDevice("D67D7412F147837CCA85B02A64BA209E").addTestDevice("AC58A582683C68755657FFD5BDEBE28A").build());
+        adView.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).addTestDevice("D67D7412F147837CCA85B02A64BA209E").addTestDevice("DE10443254DD7D05D740177B9594FB7A").build());
 
         brandSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -93,7 +86,7 @@ public class BrandActivity extends BaseGooglePermissionLceActivity<RelativeLayou
         fuelTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                mFuelType = position == -1 ?  null :  parent.getItemAtPosition(position).toString();
+                mFuelType = position == -1 ? null : parent.getItemAtPosition(position).toString();
                 checkAndShowRefunds();
             }
 
@@ -103,8 +96,7 @@ public class BrandActivity extends BaseGooglePermissionLceActivity<RelativeLayou
             }
         });
 
-        if (isGoogleAccountValid())
-            loadData(false);
+        loadData(false);
     }
 
     @Override
@@ -123,7 +115,7 @@ public class BrandActivity extends BaseGooglePermissionLceActivity<RelativeLayou
             case R.id.feedback_menu_item:
                 Intent mailIntent = new Intent(Intent.ACTION_SEND);
                 mailIntent.setType("text/plain");
-                mailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"hello@belka.us" });
+                mailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"hello@belka.us"});
                 mailIntent.putExtra(Intent.EXTRA_SUBJECT, "Rimborsi ACI - Feedback");
                 startActivity(mailIntent);
                 return true;
@@ -163,7 +155,7 @@ public class BrandActivity extends BaseGooglePermissionLceActivity<RelativeLayou
 
     @Override
     protected String getErrorMessage(Throwable e, boolean pullToRefresh) {
-        return getString(R.string.messages_error_has_occured);
+        return e instanceof PermissionNotGrantedException ? e.getMessage() : getString(R.string.messages_error_has_occured);
     }
 
     @NonNull

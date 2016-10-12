@@ -22,4 +22,6 @@
     <string name="info_title">Informazioni</string>
     <string name="app_version">Versione %s</string>
     <string name="labels_result">Risultato</string>
+    <string name="messages_permission_not_granted">Impossibile recuperare i dati, per accedere alla banca dati è necessario fornire il permesso per accedere al tuo account di Google</string>
+    <string name="messages_ask_google_permission">Questa applicazione chiede di avere accesso al tuo account Google (tramite Contatti)</string>
 </resources>

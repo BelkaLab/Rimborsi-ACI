@@ -11,7 +11,7 @@ import belka.us.acirefund.model.Brand;
  * Created by fabriziorizzonelli on 28/09/2016.
  */
 
-public interface BrandView extends MvpLceView<List<Brand>>, GoogleView {
+public interface BrandView extends MvpLceView<List<Brand>> {
 
     void showRefunds(String brandName);
 

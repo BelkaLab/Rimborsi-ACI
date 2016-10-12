@@ -15,7 +15,6 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException;
 import com.hannesdorfmann.fragmentargs.annotation.Arg;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 
@@ -23,9 +22,8 @@ import java.util.List;
 
 import belka.us.acirefund.R;
 import belka.us.acirefund.RefundApplication;
+import belka.us.acirefund.base.exception.PermissionNotGrantedException;
 import belka.us.acirefund.base.view.BaseLceFragment;
-import belka.us.acirefund.brand.BrandActivity;
-import belka.us.acirefund.dagger.GoogleFactory;
 import belka.us.acirefund.model.Refund;
 import butterknife.BindView;
 
@@ -108,7 +106,6 @@ public class RefundFragment extends BaseLceFragment<RelativeLayout, List<Refund>
             }
         });
 
-        presenter.setSheetsService(GoogleFactory.createSheetsService(((BrandActivity) getContext()).credential));
         loadData(false);
     }
 
@@ -119,7 +116,7 @@ public class RefundFragment extends BaseLceFragment<RelativeLayout, List<Refund>
 
     @Override
     protected String getErrorMessage(Throwable e, boolean pullToRefresh) {
-        return getString(R.string.messages_error_has_occured);
+        return e instanceof PermissionNotGrantedException ? e.getMessage() : getString(R.string.messages_error_has_occured);
     }
 
     @NonNull
@@ -140,11 +137,6 @@ public class RefundFragment extends BaseLceFragment<RelativeLayout, List<Refund>
 
         if (fuelType != null) presenter.loadRefunds(brand, fuelType);
         else presenter.loadRefunds(brand);
-    }
-
-    @Override
-    public void showRequestAuthorizationModal(UserRecoverableAuthIOException e) {
-        ((BrandActivity) getContext()).showRequestAuthorizationModal(e);
     }
 
     @Override
