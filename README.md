@@ -18,3 +18,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
+## About Belka
+![Alt text](http://s2.postimg.org/rcjk3hf5x/logo_rosso.jpg)
+
+[Belka](http://belka.us/en) is a Digital Agency specialized in design, mobile applications development and custom solutions.
+We love open source software! You can [see our projects](http://belka.us/en/portfolio/) or look at our case studies.
+
+Interested? [Hire us](http://belka.us/en/contacts/) to help build your next amazing project. 
+
+[www.belka.us](http://belka.us/en)
+
